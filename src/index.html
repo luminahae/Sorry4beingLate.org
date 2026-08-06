@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <title>제가 왜 늦었냐면요..</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ad-container {
+            margin: 20px 0;
+        }
+
+        /* Media query to hide ads on smaller screens */
+        @media screen and (max-width: 768px) {
+            .ad-container {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="apikey.js"></script>
+    <script src="ad.js"></script>
+    <script src="adjective.js"></script>
+    <script src="animation.js"></script>
+    <script src="script.js"></script>
+    
+</head>
+<body>
+    <img src="logo.png" alt="Logo" style="display: block; margin: 0 auto; max-width: 15%;">
+    <h1>제가 왜 늦었냐면요..</h1>
+    <h2>아래 빈칸을 입력하고 <span id="animatedText">변명을</span> 생성하세요.</h2>
+    
+    <div class="form-wrapper">
+        <div>누가: <input type="text" id="from" name="from" required maxlength="10"/><span id="fromCounter">0/10</span></div>
+        <div>누구에게 : <input type="text" id="to" name="to" required maxlength="20"/><span id="toCounter">0/20</span></div>
+        <div>상황과 의도를 말씀하세요: <input type="text" id="intent" name="intent" required maxlength="50"/><span id="intentCounter">0/50</span></div>
+        
+        <button id="detailSettingsBtn">상세 설정</button>
+        
+        <div id="detailSettingsDropdown" style="display: none;">
+            <div class="slider-container">
+                <span class="slider-label left">현실적</span>
+                <input type="range" id="volumeSlider" name="nuance" min="0" max="100" class="slider">
+                <span class="slider-label right">이상적</span>
+            </div>
+            <span id="volumeValue">따스함</span>
+            <p></p>
+            <div>글의 형식을 작성해주세요: <input type="text" id="type" name="type" maxlength="100"/><span id="typeCounter">0/100</span></div>
+            <div>말투를 작성해주세요: <input type="text" id="speech" name="speech" maxlength="30"/><span id="speechCounter">0/30</span></div>
+            <div>기타:<p></p> <input type="text" id="etc" name="etc" maxlength="100"/><span id="etcCounter">0/100</span></div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                function updateCharacterCount(inputElement, counterElement) {
+                    const count = inputElement.value.length;
+                    const maxLength = inputElement.getAttribute('maxlength');
+                    counterElement.textContent = `${count}/${maxLength}`;
+                }
+    
+                const inputs = document.querySelectorAll('input[type="text"]');
+                inputs.forEach(input => {
+                    const counterId = input.id + 'Counter'; // 'fromCounter', 'toCounter', 'intentCounter'
+                    const counterElement = document.getElementById(counterId);
+                    input.addEventListener('input', () => updateCharacterCount(input, counterElement));
+                    // Initialize counter on page load
+                    updateCharacterCount(input, counterElement);
+                });
+            });
+        </script>
+
+        <!-- 광고 컨테이너의 위치를 여기로 이동 -->
+        <div id="adContainer2" class="ad-container"></div>
+        <script>
+            // 광고 로드
+            loadCoupangAd(752652, "AF6047637", 728, 90, "adContainer2");
+        </script>
+
+    </div>
+
+    <button onclick="generateExcuse()">입력</button>
+
+    <div id="result"></div>
+
+    <button id="copyButton">복사</button>
+
+    <div id="copyConfirm" style="display: none;">복사됨!</div>
+
+    <div id="loading" class="loading-gif" style="display: none;">
+        <div class="tenor-gif-embed" data-postid="23162082" data-share-method="host" data-aspect-ratio="0.903125" data-width="100%">
+            <a href="https://tenor.com/view/loading-gif-gif-23162082">Loading Gif GIF</a> from 
+            <a href="https://tenor.com/search/loading-gifs">Loading GIFs</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    </div>
+    <script src="script.js"></script>
+    
+
+
+</body>
+</html>
