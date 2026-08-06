@@ -1,6 +1,6 @@
 # Sorry4beingLate
 
-Arthor : @Jamessung644 @being0606 @2hyunhyung
+Arthor : @Jamessung644 @being0606 @2hyunhyung @lumina.hae
 
 figma : https://www.figma.com/file/uKI3DwSVeblXVMIMDy4wd6
 
